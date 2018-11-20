@@ -46,7 +46,7 @@
     <session id="-2118212456">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.7" value="1" />
@@ -109,6 +109,9 @@
       </file>
     </leaf>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -130,6 +133,7 @@
     <option name="width" value="1120" />
     <option name="height" value="605" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -182,16 +186,15 @@
       <workItem from="1542650132881" duration="1571000" />
       <workItem from="1542651909232" duration="15633000" />
       <workItem from="1542735929543" duration="1422000" />
-      <workItem from="1542738575035" duration="53000" />
+      <workItem from="1542738575035" duration="533000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19204000" />
+    <option name="totallyTimeSpent" value="19684000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26308724" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
