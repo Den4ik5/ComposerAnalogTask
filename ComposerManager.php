@@ -8,47 +8,23 @@
 
 class ComposerManager
 {
-    private $packages = [
-        'A' => [
-            'name' => 'A',
-            'dependencies' => ['B', 'C'],
-        ],
-        'B' => [
-            'name' => 'B',
-            'dependencies' => [],
-        ],
-        'C' => [
-            'name' => 'C',
-            'dependencies' => ['B', 'D'],
-        ],
-        'D' => [
-            'name' => 'D',
-            'dependencies' => [],
-        ],
-        'E' => [
-            'name' => 'E',
-            'dependencies' => ['A'],
-        ],
-    ];
-
     /**
-     * @return void
+     * @param array $packages
      */
-    public function validatePackageDefinitions()
+    public function validatePackageDefinitions(array $packages):void
     {
-        $this->comparingKeyAndValue();
-        $this->dependenciesExists();
-        $this->isDependenciesReal();
-        $this->noCycleDependencies();
+        $this->comparingKeyAndValue($packages);
+        $this->dependenciesExists($packages);
+        $this->isDependenciesReal($packages);
+        $this->noCycleDependencies($packages);
         $this->imitationOfDownloading();
     }
 
     /**
-     * @return void
+     * @param $packages
      */
-    private function comparingKeyAndValue():void
+    private function comparingKeyAndValue($packages):void
     {
-        $packages = $this->packages;
         $Names = array_column($packages, 'name');
         $Keys = array_keys($packages);
         if ($Names !== $Keys) {
@@ -57,11 +33,10 @@ class ComposerManager
     }
 
     /**
-     * @return void
+     * @param $packages
      */
-    private function dependenciesExists():void
+    private function dependenciesExists($packages):void
     {
-        $packages = $this->packages;
         $dependencies = array_column($packages, 'dependencies');
         if ((array(count($packages))) !== (array(count($dependencies)))) {
             throw new \http\Exception\InvalidArgumentException('Not All Elements have dependencies');
@@ -70,11 +45,10 @@ class ComposerManager
     }
 
     /**
-     * @return void
+     * @param $packages
      */
-    private function isDependenciesReal():void
+    private function isDependenciesReal($packages):void
     {
-        $packages = $this->packages;
         $dependencies = array_column($packages, 'dependencies');
         $Keys = array_keys($packages);
         foreach ($dependencies as $dependency) {
@@ -85,15 +59,15 @@ class ComposerManager
     }
 
     /**
-     * @return void
+     * @param $packages
      */
-    private function noCycleDependencies():void{
+    private function noCycleDependencies($packages):void{
 
-      foreach ($this->packages as  $package){
+      foreach ($packages as  $package){
           $packageName=$package['name'];
           $dependency =$package['dependencies'];
           foreach ($dependency as $item){
-              foreach ($this->packages as $pack){
+              foreach ($packages as $pack){
                   if($pack['name']===$item && in_array($packageName, $pack['dependencies'])){
                       throw new \http\Exception\InvalidArgumentException('cycle dependencies');
                   }
@@ -101,10 +75,8 @@ class ComposerManager
           }
       }
     }
-    /**
-     * @return void
-     */
-    private function imitationOfDownloading(){
+
+    private function imitationOfDownloading():void{
         echo 'downloading packages... ';
         echo PHP_EOL;
         sleep(2);
@@ -113,42 +85,104 @@ class ComposerManager
     }
 
     /**
+     * @param array $packages
      * @param string $packageName
      * @return array
      */
-    public function getAllPackageDependencies(string $packageName):array
+    private function getPackageDependencies(array $packages, string $packageName):array
     {
-        $dependencies=array();
-        foreach ($this->packages as $item){
-            if ($item['name']==='$packageName'){
-                echo $packageName['name'];
-               $dependencies=$this->getDependency($packageName,$dependencies);
+        static $dependencies = array();
+        foreach ($packages[$packageName] as $package){
+            if(is_array($package)){
+                $dependencies =array_merge($dependencies,$package);
+                foreach ($package as $item){
+                    $this->getPackageDependencies($packages,$item);
+                }
             }
         }
+    return array_unique($dependencies);
+    }
+
+    /**
+     * @param array $packages
+     * @return array
+     */
+    private function checking(array $packages):array{
+        $dependencies=[];
+        foreach ($packages as $package){
+            $x=count($package['dependencies']);
+            $temp=['value'=>$x];
+            $package=array_merge($package, $temp);
+            $dependencies[]=$package;
+        }
+        usort($dependencies, $this->build_sorter('value') );
         return $dependencies;
     }
 
     /**
-     * @param String $packageName
-     * @param array $dependencies
-     * @return mixed
+     * @param string $key
+     * @return Closure
      */
-    private function getDependency(String $packageName, array $dependencies)
-    {
-        if (!in_array($packageName,$dependencies)){
-            array_push($dependencies, $packageName);
-            foreach ($this->packages[$packageName]['dependencies'] as $item) {
-                if (!in_array($item,$dependencies)){
-                    return $this->getDependency($item, $dependencies);
-                }
+    private function build_sorter(string $key) {
+        return function ($a, $b) use ($key) {
+            return strnatcmp($a[$key], $b[$key]);
+        };
+    }
+
+    /**
+     * @param array $packagesSorted
+     * @param array $dependencies
+     * @return array
+     */
+    private function compare(array $packagesSorted, array $dependencies){
+        $correctOrderDependencies=[];
+        foreach ($packagesSorted as $item){
+            if(in_array($item['name'],$dependencies)){
+                $correctOrderDependencies[]=$item['name'];
             }
+        }
+        return $correctOrderDependencies;
+    }
+
+    /**
+     * @param array $packages
+     * @param string $packageName
+     */
+    public function getAllPackageDependencies(array $packages, string $packageName){
+        $sorted =$this->checking($packages);
+        $dependencies =$this->getPackageDependencies($packages, $packageName);
+        $toView= $this->compare($sorted,$dependencies);
+        foreach ($toView as $item){
+            echo $item;
+            echo ' ';
         }
     }
 }
-$composer = new ComposerManager();
-$dependencies = array();
 
-$composer->validatePackageDefinitions();
-$composer-> getAllPackageDependencies('B');
+$packages = [
+    'A' => [
+        'name' => 'A',
+        'dependencies' => ['B', 'C'],
+    ],
+    'B' => [
+        'name' => 'B',
+        'dependencies' => [],
+    ],
+    'C' => [
+        'name' => 'C',
+        'dependencies' => ['B', 'D'],
+    ],
+    'D' => [
+        'name' => 'D',
+        'dependencies' => [],
+    ],
+    'E' => [
+        'name' => 'E',
+        'dependencies' => ['A'],
+    ],
+];
+$composer = new ComposerManager();
+$composer->validatePackageDefinitions($packages);
+$composer->getAllPackageDependencies($packages, 'A');
 
 ?>

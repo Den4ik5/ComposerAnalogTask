@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3a3cca2e-c395-4a29-b908-03ff18f0d623" name="Default Changelist" comment="" />
+    <list default="true" id="3a3cca2e-c395-4a29-b908-03ff18f0d623" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComposerManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/ComposerManager.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,21 +49,23 @@
     <session id="-2118212456">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.10" value="2" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="3444" />
+          <entry key="php" value="7038" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="3444" />
+          <entry key="PHP" value="7038" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -82,26 +87,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ComposerManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="153" column="2" lean-forward="true" selection-start-line="153" selection-start-column="2" selection-end-line="153" selection-end-column="2" />
+            <state relative-caret-position="187">
+              <caret line="159" selection-start-line="159" selection-end-line="159" />
               <folding>
-                <element signature="e#135#606#0#PHP" />
-                <element signature="e#613#644#0#PHP" />
                 <element signature="n#validatePackageDefinitions#0;n#ComposerManager#0;n#!!top" />
-                <element signature="e#903#934#0#PHP" />
                 <element signature="n#comparingKeyAndValue#0;n#ComposerManager#0;n#!!top" />
-                <element signature="e#1270#1301#0#PHP" />
                 <element signature="n#dependenciesExists#0;n#ComposerManager#0;n#!!top" />
-                <element signature="e#1656#1687#0#PHP" />
                 <element signature="n#isDependenciesReal#0;n#ComposerManager#0;n#!!top" />
-                <element signature="e#2119#2150#0#PHP" />
                 <element signature="n#noCycleDependencies#0;n#ComposerManager#0;n#!!top" />
-                <element signature="e#2685#2716#0#PHP" />
                 <element signature="n#imitationOfDownloading#0;n#ComposerManager#0;n#!!top" />
-                <element signature="e#2941#3007#0#PHP" />
+                <element signature="n#getPackageDependencies#0;n#ComposerManager#0;n#!!top" />
+                <element signature="n#checking#0;n#ComposerManager#0;n#!!top" />
+                <element signature="e#3527#3576#0#PHP" />
+                <element signature="n#build_sorter#0;n#ComposerManager#0;n#!!top" />
+                <element signature="n#compare#0;n#ComposerManager#0;n#!!top" />
                 <element signature="n#getAllPackageDependencies#0;n#ComposerManager#0;n#!!top" />
-                <element signature="e#3398#3498#0#PHP" />
-                <element signature="n#getDependency#0;n#ComposerManager#0;n#!!top" />
+                <element signature="e#6151#6622#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -127,11 +128,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="50" />
-    <option name="y" value="5" />
-    <option name="width" value="1120" />
-    <option name="height" value="605" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="463" />
+    <option name="width" value="1463" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -139,7 +139,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -151,11 +150,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AlmostBlankSymfonyProject/templates/simple/index.html.twig" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -187,16 +187,20 @@
       <workItem from="1542651909232" duration="15633000" />
       <workItem from="1542735929543" duration="1422000" />
       <workItem from="1542738575035" duration="533000" />
+      <workItem from="1542739915360" duration="908000" />
+      <workItem from="1542790101061" duration="55000" />
+      <workItem from="1542825402053" duration="20078000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19684000" />
+    <option name="totallyTimeSpent" value="40725000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="371" y="0" width="1170" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26308724" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.04054054" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -209,7 +213,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.41276595" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.35150644" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -240,26 +244,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ComposerManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="153" column="2" lean-forward="true" selection-start-line="153" selection-start-column="2" selection-end-line="153" selection-end-column="2" />
+        <state relative-caret-position="187">
+          <caret line="159" selection-start-line="159" selection-end-line="159" />
           <folding>
-            <element signature="e#135#606#0#PHP" />
-            <element signature="e#613#644#0#PHP" />
             <element signature="n#validatePackageDefinitions#0;n#ComposerManager#0;n#!!top" />
-            <element signature="e#903#934#0#PHP" />
             <element signature="n#comparingKeyAndValue#0;n#ComposerManager#0;n#!!top" />
-            <element signature="e#1270#1301#0#PHP" />
             <element signature="n#dependenciesExists#0;n#ComposerManager#0;n#!!top" />
-            <element signature="e#1656#1687#0#PHP" />
             <element signature="n#isDependenciesReal#0;n#ComposerManager#0;n#!!top" />
-            <element signature="e#2119#2150#0#PHP" />
             <element signature="n#noCycleDependencies#0;n#ComposerManager#0;n#!!top" />
-            <element signature="e#2685#2716#0#PHP" />
             <element signature="n#imitationOfDownloading#0;n#ComposerManager#0;n#!!top" />
-            <element signature="e#2941#3007#0#PHP" />
+            <element signature="n#getPackageDependencies#0;n#ComposerManager#0;n#!!top" />
+            <element signature="n#checking#0;n#ComposerManager#0;n#!!top" />
+            <element signature="e#3527#3576#0#PHP" />
+            <element signature="n#build_sorter#0;n#ComposerManager#0;n#!!top" />
+            <element signature="n#compare#0;n#ComposerManager#0;n#!!top" />
             <element signature="n#getAllPackageDependencies#0;n#ComposerManager#0;n#!!top" />
-            <element signature="e#3398#3498#0#PHP" />
-            <element signature="n#getDependency#0;n#ComposerManager#0;n#!!top" />
+            <element signature="e#6151#6622#0#PHP" />
           </folding>
         </state>
       </provider>
